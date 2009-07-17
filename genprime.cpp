@@ -1,16 +1,16 @@
 #include <cmath>
 #include <cstdio>
 #include <cstdlib>
+#include <stdint.h>
+#include <stdbool.h>
 #include <sys/time.h>
-
-typedef unsigned long prime_t;
 
 class GenPrime
 {
 public:
-	bool isprime(prime_t x)
+	bool isprime(uint32_t x)
 	{
-		prime_t lim, y;
+		uint32_t lim, y;
 		if (x < 2)
 			return false;
 		if (x < 4)
@@ -24,7 +24,7 @@ public:
 		if ((x + 1) % 6 != 0)
 			if ((x - 1) % 6 != 0)
 				return false;
-		lim = (prime_t)(sqrt((double)x) + 1.0f);
+		lim = (uint32_t)(sqrt((double)x) + 1.0f);
 		for (y = 3; y < lim; y += 2)
 		{
 			if (x % y == 0)
@@ -33,9 +33,9 @@ public:
 		return true;
 	}
 	
-	prime_t genprime(prime_t max)
+	uint32_t genprime(uint32_t max)
 	{
-		prime_t count = 0,
+		uint32_t count = 0,
 			current = 1;
 		while (count < max)
 		{
@@ -49,7 +49,7 @@ public:
 
 int main(int argc, char **argv)
 {
-	prime_t start = argc > 1 ? atol(argv[1]) : 0,
+	uint32_t start = argc > 1 ? atol(argv[1]) : 0,
 		stop = argc > 2 ? atol(argv[2]) + 1 : 0,
 		x, last;
 	struct timeval begin, end;
@@ -62,7 +62,7 @@ int main(int argc, char **argv)
 		gettimeofday(&end, NULL);
 		duration = (double)(end.tv_sec - begin.tv_sec) +
 			((double)(end.tv_usec) - (double)(begin.tv_usec)) / 1000000.0;
-		printf ("Found %8lu primes in %10.5f seconds (last was %10lu)\n",
+		printf ("Found %8i primes in %10.5f seconds (last was %10i)\n",
 			x, (float)duration, last);
 	}
 	return 0;
