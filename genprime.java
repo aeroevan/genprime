@@ -1,7 +1,7 @@
 public class genprime {
-	private static boolean isprime(long x)
+	private static boolean isprime(int x)
 	{
-		long lim, y;
+		int lim, y;
 		if (x < 2)
 			return false;
 		if (x < 4)
@@ -15,7 +15,7 @@ public class genprime {
 		if ((x + 1) % 6 != 0)
 			if ((x - 1) % 6 != 0)
 				return false;
-		lim = (long)(Math.sqrt((double)x) + 1.0f);
+		lim = (int)(Math.sqrt((double)x) + 1.0f);
 		for (y = 3; y < lim; y += 2)
 		{
 			if (x % y == 0)
@@ -24,9 +24,9 @@ public class genprime {
 		return true;
 	}
 	
-	private static long genprime(long max)
+	private static int genprime(int max)
 	{
-		long count = 0,
+		int count = 0,
 		     current = 1;
 		while (count < max)
 		{
@@ -39,10 +39,10 @@ public class genprime {
 
 	public static void main(String[] args)
 	{
-		long start = Long.parseLong(args[0]),
-		stop = Long.parseLong(args[1]) + 1,
+		int start = Integer.parseInt(args[0]),
+		stop = Integer.parseInt(args[1]) + 1,
 		last;
-		for ( long x = start; x < stop; x += start )
+		for ( int x = start; x < stop; x += start )
 		{
 			long starttime = System.nanoTime();
 			last = genprime(x);
