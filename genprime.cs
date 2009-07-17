@@ -10,9 +10,9 @@ namespace GenPrime
 {
 	class GenPrime
 	{
-		private static bool isprime(ulong x)
+		private static bool isprime(uint x)
 		{
-			ulong lim, y;
+			uint lim, y;
 			if (x < 2)
 				return false;
 			if (x < 4)
@@ -26,7 +26,7 @@ namespace GenPrime
 			if ((x + 1) % 6 != 0)
 				if ((x - 1) % 6 != 0)
 					return false;
-			lim = (ulong)(Math.Sqrt((double)x) + 1.0f);
+			lim = (uint)(Math.Sqrt((double)x) + 1.0f);
 			for (y = 3; y < lim; y += 2)
 			{
 				if (x % y == 0)
@@ -35,9 +35,9 @@ namespace GenPrime
 			return true;
 		}
 		
-		private static ulong genprime(ulong max)
+		private static uint genprime(uint max)
 		{
-			ulong count = 0,
+			uint count = 0,
 			     current = 1;
 			while (count < max)
 			{
@@ -50,9 +50,9 @@ namespace GenPrime
 
 		public static void Main(string[] args)
 		{
-	                ulong start = ulong.Parse(args[0]), stop = ulong.Parse(args[1]) + 1, last;
+	                uint start = uint.Parse(args[0]), stop = uint.Parse(args[1]) + 1, last;
 			Stopwatch sw = new Stopwatch();
-	                for ( ulong x = start; x < stop; x += start )
+	                for ( uint x = start; x < stop; x += start )
 	                {
 	                        sw.Start();
 				last = genprime(x);
